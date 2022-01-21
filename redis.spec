@@ -20,7 +20,7 @@
 
 Name:              redis
 Version:           6.2.6
-Release:           2%{?dist}
+Release:           3%{?dist}
 Summary:           A persistent key-value database
 # redis, jemalloc, linenoise, lzf, hiredis are BSD
 # lua is MIT
@@ -296,6 +296,9 @@ fi
 
 
 %changelog
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 6.2.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
 * Wed Nov  3 2021 Remi Collet <remi@remirepo.net> - 6.2.6-2
 - use proper license in dec/devel sub-packages
 
