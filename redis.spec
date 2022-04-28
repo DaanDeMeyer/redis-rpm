@@ -146,13 +146,13 @@ if test "$api" != "%{redis_modules_abi}"; then
    exit 1
 fi
 
-%global make_flags	DEBUG="" V="echo" LDFLAGS="$LDFLAGS" CFLAGS+="$CFLAGS -fPIC" INSTALL="install -p" PREFIX=%{buildroot}%{_prefix} BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
+%global make_flags	DEBUG="" V="echo" LDFLAGS="%{?__global_ldflags}" CFLAGS+="%{optflags} -fPIC" INSTALL="install -p" PREFIX=%{buildroot}%{_prefix} BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
 
 %build
 %make_build %{make_flags} all
 
 %install
-%make_install %{make_flags}
+make %{make_flags} install
 
 # Filesystem.
 install -d %{buildroot}%{_sharedstatedir}/%{name}
