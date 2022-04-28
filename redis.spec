@@ -7,6 +7,9 @@
 # Please preserve changelog entries
 #
 
+# temp workaround to https://bugzilla.redhat.com/2059488
+%undefine _package_note_file
+
 # Tests fail in mock, not in local build.
 %bcond_with    tests
 
@@ -19,8 +22,8 @@
 %global macrosdir %(d=%{_rpmconfigdir}/macros.d; [ -d $d ] || d=%{_sysconfdir}/rpm; echo $d)
 
 Name:              redis
-Version:           6.2.6
-Release:           3%{?dist}
+Version:           6.2.7
+Release:           1%{?dist}
 Summary:           A persistent key-value database
 # redis, jemalloc, linenoise, lzf, hiredis are BSD
 # lua is MIT
@@ -296,6 +299,9 @@ fi
 
 
 %changelog
+* Thu Apr 28 2022 Remi Collet <remi@remirepo.net> - 6.2.7-1
+- Upstream 6.2.7 release.
+
 * Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 6.2.6-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
