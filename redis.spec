@@ -152,7 +152,7 @@ fi
 %global make_flags	DEBUG="" V="echo" LDFLAGS="%{?__global_ldflags}" CFLAGS+="%{optflags} -fPIC" INSTALL="install -p" PREFIX=%{buildroot}%{_prefix} BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
 
 %build
-%make_build %{make_flags} all
+%make_build %{make_flags} all || { cat deps/jemalloc/config.log ; false ; }
 
 %install
 make %{make_flags} install
